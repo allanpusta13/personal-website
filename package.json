@@ -11,7 +11,8 @@
   "author": "Alvin Allan Dan Pusta",
   "license": "MIT",
   "devDependencies": {
-    "tailwindcss": "^4.0.0",
-    "@tailwindcss/cli": "^4.0.0"
+    "@tailwindcss/cli": "^4.0.0",
+    "playwright": "^1.62.1",
+    "tailwindcss": "^4.0.0"
   }
 }
