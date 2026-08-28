@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+@theme {
+  /* Dark mode colors (default) */
+  --color-bg: #0A1520;
+  --color-blueprint: #1E3A5F;
+  --color-blueprint-light: #2A4A75;
+  --color-panel: #162838;
+  --color-panel-alt: #1E3548;
+  --color-raised: #244060;
+  --color-border: #3A5A7A;
+  --color-border-soft: #2D4A65;
+  --color-border-technical: #2A4A75;
+  --color-ink: #E8F0F8;
+  --color-dim: #B8C8D8;
+  --color-mute: #7890A8;
+  --color-accent: #FFB454;
+  --color-accent-dim: #C98A38;
+  --color-measurement: #FFB454;
+  --color-ok: #7EE787;
+  --color-tech-line: #E8F0F8;
+  --color-tech-grid: #1E3A5F;
+
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-sans: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Light mode colors */
+.light-mode {
+  --color-bg: #F8FAFC;
+  --color-blueprint: #1E3A5F;
+  --color-blueprint-light: #2A4A75;
+  --color-panel: #FFFFFF;
+  --color-panel-alt: #F1F5F9;
+  --color-raised: #E2E8F0;
+  --color-border: #CBD5E1;
+  --color-border-soft: #E2E8F0;
+  --color-border-technical: #94A3B8;
+  --color-ink: #1E293B;
+  --color-dim: #475569;
+  --color-mute: #64748B;
+  --color-accent: #FFB454;
+  --color-accent-dim: #C98A38;
+  --color-measurement: #1E3A5F;
+  --color-ok: #16A34A;
+  --color-tech-line: #1E3A5F;
+  --color-tech-grid: #E2E8F0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+}
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(30, 58, 95, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 58, 95, 0.3) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px;
+}
+
+.light-mode .blueprint-grid {
+  background-image:
+    linear-gradient(rgba(30, 58, 95, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 58, 95, 0.15) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px;
+}
+
+::selection {
+  background: rgb(255 180 84 / 0.15);
+  color: var(--color-accent);
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+.cursor {
+  animation: blink 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; opacity: 1; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Technical grid patterns */
+.tech-grid {
+  background-image:
+    linear-gradient(rgba(30, 58, 95, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 58, 95, 0.3) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Technical line patterns */
+.tech-line {
+  border-color: var(--color-blueprint);
+}
+
+/* Technical measurement markers */
+.measurement-marker {
+  color: var(--color-measurement);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+}
+
+/* Blueprint aesthetic utilities */
+.blueprint-panel {
+  background: linear-gradient(135deg, rgba(30, 58, 95, 0.1) 0%, transparent 100%);
+  border: 1px solid var(--color-blueprint);
+}
+
+.technical-border {
+  border: 1px solid var(--color-blueprint);
+}
+
+.technical-border-heavy {
+  border: 2px solid var(--color-blueprint);
+}
+
+/* Experience entries — interactive hover/focus */
+.experience-entry {
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.experience-entry:hover,
+.experience-entry:focus-within {
+  border-color: var(--color-accent);
+  background-color: rgba(30, 58, 95, 0.15);
+  box-shadow: 0 0 0 1px var(--color-accent), 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.light-mode .experience-entry:hover,
+.light-mode .experience-entry:focus-within {
+  background-color: rgba(30, 58, 95, 0.06);
+  box-shadow: 0 0 0 1px var(--color-accent), 0 4px 24px rgba(30, 58, 95, 0.08);
+}
+
+.experience-header {
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.experience-header:hover {
+  background-color: rgba(255, 180, 84, 0.06);
+}
+
+.experience-header:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+  border-radius: 2px;
+}
+
+/* Status indicator — living pulse when active */
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.status-active {
+  animation: status-pulse 2.5s ease-in-out infinite;
+}
+
+/* Global focus-visible baseline */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-active {
+    animation: none;
+    opacity: 1;
+  }
+}
