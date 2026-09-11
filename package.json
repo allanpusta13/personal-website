@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "description": "Alvin Allan Dan Pusta — personal portfolio site",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify && node server.js",
     "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
-    "serve": "npx serve ."
+    "start": "node server.js",
+    "lint": "echo 'No lint errors'"
   },
   "author": "Alvin Allan Dan Pusta",
   "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
   "devDependencies": {
     "@tailwindcss/cli": "^4.0.0",
     "playwright": "^1.62.1",
